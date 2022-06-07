@@ -2,23 +2,28 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: Software Engineer at <a href='https://www.booking.com/'>Booking.com</a>. Science, tech and philosophy enthusiast.
 
 profile:
   align: right
   image: IMG_2800.jpg
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>2021. Eindhoven, Netherlands</p>
 
-news: true  # includes a list of news items
-selected_papers: true # includes a list of papers marked as "selected={true}"
+news: false  # includes a list of news items
+selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I was born in Nineteen Eighty-Four in <a href='https://goo.gl/maps/nSMod2f3PkkTnPJz9'>Bayat</a>, 
+a remote town in central Turkey. I developed an interest in science and nature at an early age by 
+where my first encounter with science was through the <a href='https://www.goodreads.com/book/show/37507564-junior-larousse'><em>Junior Larousse</em></a> children's encyclopedias, and my interest in nature stems from being part of a remote, society 
+where being self-sufficient was a vital necessity.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+I studied BSc and MSc degrees at <a href='https://eee.metu.edu.tr/'>EEE at METU</a>, specialized in <em>image processing</em>, 
+<em>machine learning</em> and <em>software development</em>. I worked as aa R&D enginner at TUBITAK, and Roketsan,
+and software enginner at Nokta, Amazon, and TomTom. Currently, I am working at Booking.com as software development engineer.
+I like coding(C++, Java, Pyhton), solving programming puzzles, and following the trends in machine learning and cloud computing.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Spending time with my family and friends, reading and listenin music are my daily, hiking and travelling are my
+long-term activities.
