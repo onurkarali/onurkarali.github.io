@@ -18,7 +18,7 @@ footer_text: >
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website  # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: atom-png-icon.png  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://onurkarali.github.io # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/
@@ -31,7 +31,7 @@ impressum_path:  # set to path to include impressum link in the footer, use the 
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout
