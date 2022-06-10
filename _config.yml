@@ -176,6 +176,7 @@ plugins:
   - jekyll-target-blank
   - jekyll-twitter-plugin
   - jekyll-mermaid
+  - jekyll-scholar
   - jemoji
 
 # Sitemap settings
