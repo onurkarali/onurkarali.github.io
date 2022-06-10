@@ -1,7 +1,7 @@
 ---
-layout: cv
-title: cv
-permalink: /cv
+layout: page
+title: 
+permalink: /cv/
 subtitle: Software Engineer at <a href='https://www.booking.com/'>Booking.com</a>. Science, tech and philosophy enthusiast.
 ---
 
