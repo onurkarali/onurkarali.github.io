@@ -21,9 +21,11 @@ where my first encounter with science was through the <a href='https://www.goodr
 where being self-sufficient was a vital necessity.
 
 I studied BSc and MSc degrees at <a href='https://eee.metu.edu.tr/'>EEE at METU</a>, specialized in <em>image processing</em>, 
-<em>machine learning</em> and <em>software development</em>. I worked as aa R&D enginner at TUBITAK, and Roketsan,
-and software enginner at Nokta, Amazon, and TomTom. Currently, I am working at Booking.com as software development engineer.
-I like coding(C++, Java, Pyhton), solving programming puzzles, and following the trends in machine learning and cloud computing.
+<em>machine learning</em> and <em>software development</em>. I worked as aa R&D engineer at TUBITAK, and Roketsan,
+and software engineer at Nokta, Amazon, and TomTom. Currently, I am working at Booking.com as software development engineer.
+I code mostly in C++, Java and Javascript as a professional, however, I do amateurly some Pyhton, R, Dart, PHP and Kotlin 
+whenever I need in my personal projects. I try to solve programming puzzles and join competitive programming whenever I have time, 
+and I follow the trends in machine learning and cloud computing.
 
-Spending time with my family and friends, reading and listenin music are my daily, hiking and travelling are my
+I ike spending time with my family and friends. Reading and listenin music are my daily, hiking and travelling are my
 long-term activities.
