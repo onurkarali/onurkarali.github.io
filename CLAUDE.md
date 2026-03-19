@@ -4,135 +4,56 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a minimalist personal portfolio website for Onur Karalı hosted on GitHub Pages. The site is a **static HTML website** with only 3 pages - all HTML files are pre-generated and committed to the repository. No build step required, no Jekyll, no dependencies.
+Minimalist personal portfolio for Onur Karalı on GitHub Pages. Pure static HTML — no build step, no Jekyll, no npm. Just edit HTML and push to `main`.
 
-GitHub Pages serves the HTML files directly from the main branch.
-
-## Site Structure
-
-```
-/
-├── index.html              # Main landing page (about)
-├── cv/
-│   └── index.html          # CV/Resume page
-├── publications/
-│   └── index.html          # Publications listing
-├── assets/                 # Static assets
-│   ├── css/                # Stylesheets (main.css)
-│   ├── js/                 # JavaScript files (theme, dark mode, common)
-│   ├── img/                # Images and photos
-│   ├── pdf/                # PDF documents (e.g., CV)
-│   └── bibliography/       # Bibliography data
-├── _templates/             # Hidden page templates for future reference
-│   ├── blog/               # Blog post example
-│   ├── news/               # News announcement example
-│   └── projects/           # Project page example
-├── 404.html                # Custom 404 error page
-├── sitemap.xml             # Site map for SEO
-└── robots.txt              # Search engine directives
-```
-
-**Note:** The `_templates/` directory is ignored by GitHub Pages (underscore prefix) and serves as reference for future page types.
-
-## Development Workflow
-
-This is as simple as it gets - just edit HTML files and push to GitHub.
-
-### Testing Locally
+## Local Dev
 
 ```bash
-# Option 1: Open HTML file directly in browser
-open index.html
-
-# Option 2: Use a simple HTTP server
 python3 -m http.server 8000
-# Then visit http://localhost:8000
+# http://localhost:8000
 ```
 
-### Making Changes
+Use a local server (not `open index.html`) because asset paths are root-relative (`/assets/css/main.css`).
 
-**Update content:**
-- Edit `index.html` for the about page
-- Edit `/cv/index.html` for CV
-- Edit `/publications/index.html` for publications
+## Architecture
 
-**Update styles:**
-- Edit `/assets/css/main.css` for global styles
-- Changes apply across all 3 pages
+**3 pages, each a standalone HTML file sharing identical `<head>`, `<nav>`, and `<footer>` blocks:**
+- `index.html` — About/landing page
+- `cv/index.html` — CV/Resume
+- `publications/index.html` — Publications listing
 
-**Update images:**
-- Add/replace files in `/assets/img/`
-- Update HTML `<img>` or `<picture>` tags accordingly
+There is no templating system. The shared boilerplate (CDN links, navbar, footer, script tags) is duplicated across all 3 files. **Any structural change (nav links, CDN versions, footer text, script order) must be applied to all 3 files manually.**
 
-**Deploy:**
-```bash
-git add .
-git commit -m "update content"
-git push origin main
-```
+### Navbar inconsistency to be aware of
 
-Changes go live automatically on GitHub Pages within 1-2 minutes.
+`index.html` omits the `<a class="navbar-brand">` element that the other two pages include. Each page marks its own nav item as `active` with `class="nav-item active"` and a `<span class="sr-only">(current)</span>`.
 
-### Adding New Pages (Future)
+### Dark mode
 
-Use templates in `_templates/` as reference:
-- `_templates/blog/` - for blog posts
-- `_templates/news/` - for announcements
-- `_templates/projects/` - for project showcases
+Theme system loads in `<head>` (before body render) to prevent flash:
+1. `theme.js` — reads `localStorage("theme")`, sets `data-theme` attribute on `<html>`, swaps syntax highlight stylesheets
+2. `dark_mode.js` — binds click handler on `#light-toggle` button
+3. CSS custom properties in `main.css` (`:root` for light, `html[data-theme='dark']` for dark)
 
-Remember to:
-1. Add navigation link in all 3 pages (index.html, cv/index.html, publications/index.html)
-2. Update sitemap.xml
-3. Maintain consistent header/footer structure
+### CSS theming
 
-## Technical Details
+All colors use CSS custom properties (`--global-bg-color`, `--global-theme-color`, `--global-hover-color`, etc.) defined at the top of `assets/css/main.css`. The theme color is `#B509AC` (light) / `#2698BA` (dark).
 
-### Dependencies (All CDN-hosted)
+### Image convention
 
-- **Bootstrap 4.6.1** - Base CSS framework
-- **MDB** - Material Design components
-- **FontAwesome 5.15.4** - Icons
-- **jQuery 3.6.0** - DOM manipulation
-- **MathJax 3.2.0** - Mathematical notation
+Images use responsive `<picture>` elements with 3 WebP srcsets (`-480.webp`, `-800.webp`, `-1400.webp`) plus a JPG/PNG fallback. When adding images, provide all 4 variants.
 
-No npm, no bundler, no build process.
+### CDN dependencies (all loaded with SRI hashes)
 
-### Page Structure
+Bootstrap 4.6.1, MDB 4.20.0, FontAwesome 5.15.4, Academicons 1.9.1, jQuery 3.6.0, Masonry 4.2.2, Medium Zoom 1.0.6, MathJax 3.2.0, Popper.js 2.11.2.
 
-All 3 pages share the same structure:
-```html
-<head>
-  - Metadata
-  - CDN stylesheets (Bootstrap, MDB, FontAwesome)
-  - /assets/css/main.css
-  - Dark mode scripts
-</head>
-<body>
-  <nav> Fixed top navbar with dark mode toggle </nav>
-  <div class="container"> Page content </div>
-  <footer> Copyright notice </footer>
-  <scripts> jQuery, Bootstrap, MDB, custom JS </scripts>
-</body>
-```
+### Templates
 
-### Custom JavaScript
+`_templates/` contains reference page layouts (blog, news, projects). The underscore prefix makes GitHub Pages ignore this directory.
 
-Located in `/assets/js/`:
-- `theme.js` - Theme management
-- `dark_mode.js` - Dark/light mode toggle
-- `common.js` - Utilities
-- `zoom.js` - Image zoom
-- `masonry.js` - Image grid layout
+## Key constraints
 
-### Styling
-
-- Custom styles in `/assets/css/main.css`
-- Dark mode support (user preference saved in localStorage)
-- Responsive images with multiple sizes (480w, 800w, 1400w)
-- Mobile-first responsive design
-
-### Important
-
-- Navigation must be updated in all 3 HTML files when adding pages
-- Images should have responsive variants for performance
-- All dependencies load from CDNs with integrity hashes
+- **No build process** — everything is hand-edited HTML/CSS/JS
+- **All 3 pages must stay in sync** for nav, head, footer, and script blocks
+- **Root-relative paths** (`/assets/...`) — works on GitHub Pages but not with `file://`
+- Update `sitemap.xml` when adding/removing pages
